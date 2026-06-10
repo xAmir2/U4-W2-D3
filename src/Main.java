@@ -7,6 +7,9 @@ void main(String[] args) {
     Customer Alexander = new Customer(523523L, "Alexander", 1);
     Customer Martina = new Customer(33423141L, "Martina", 2);
     Customer Paolone = new Customer(346346L, "Paolo", 3);
+
+    List<Customer> customers = List.of(Alexander, Martina, Paolone);
+
     Product hp1 = new Product(123456L, "Harry Potter and the Philosopher's Stone.", "Books", 59.99);
     Product hp2 = new Product(233455L, "Harry Potter and the Chamber of Secrets.", "Books", 119.99);
     Product hp3 = new Product(252414L, "Harry Potter and the Prisoner of Azkaban.", "Books", 99.99);
@@ -19,9 +22,9 @@ void main(String[] args) {
     List<Product> products = List.of(hp1, hp2, hp3, bike, cream, pacifier, stroller);
 
 
-    List<Product> result = products.stream().filter(p -> p.getCategory().equals("Books")).filter(p -> p.getPrice() > 100).toList();
+    List<Product> priceOver100 = products.stream().filter(product -> product.getCategory().equals("Books")).filter(product -> product.getPrice() > 100).toList();
     System.out.println("Book price over 100:");
-    System.out.println(result);
+    System.out.println(priceOver100);
 
     Order order1 = new Order(235235L, "Shipped", LocalDate.now(), LocalDate.now().plusDays(2), List.of(bike, stroller, hp1), Alexander);
     Order order2 = new Order(325235L, "Pending", LocalDate.now(), LocalDate.now().plusDays(7), List.of(cream, pacifier, hp2), Martina);
@@ -33,7 +36,7 @@ void main(String[] args) {
     System.out.println("\nOrders that include 'Baby' category items:");
     System.out.println(babyCategory);
 
-    List<Product> boys10 = products.stream().filter(p -> p.getCategory().equals("Boys")).map(p -> new Product(p.getId(), p.getName(), p.getCategory(), p.getPrice() * 0.9)).toList();
+    List<Product> boys10 = products.stream().filter(product -> product.getCategory().equals("Boys")).map(product -> new Product(product.getId(), product.getName(), product.getCategory(), product.getPrice() * 0.9)).toList();
     System.out.println("\n10% off for items in Boys category:");
     System.out.println(boys10);
 }
