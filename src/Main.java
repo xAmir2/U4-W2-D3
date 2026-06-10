@@ -22,7 +22,7 @@ void main(String[] args) {
     List<Product> products = List.of(hp1, hp2, hp3, bike, cream, pacifier, stroller);
 
 
-    List<Product> priceOver100 = products.stream().filter(product -> product.getCategory().equals("Books")).filter(product -> product.getPrice() > 100).toList();
+    List<Product> priceOver100 = products.stream().filter(product -> product.getCategory().equals("Books") && product.getPrice() > 100).toList();
     System.out.println("Book price over 100:");
     System.out.println(priceOver100);
 
